@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no" />
+  <title>BLOKRA</title>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #9ad8ff;
+      font-family: system-ui, sans-serif; user-select: none; -webkit-user-select: none; }
+    #app { position: fixed; inset: 0; }
+    canvas { display: block; }
+    #hud { position: fixed; top: 12px; left: 12px; color: #fff; font-weight: 800; font-size: 22px;
+      text-shadow: 0 2px 4px rgba(0,0,0,.5); pointer-events: none; }
+    #hud small { display: block; font-weight: 400; font-size: 12px; opacity: .92; }
+    #crosshair { position: fixed; left: 50%; top: 50%; width: 10px; height: 10px; margin: -5px 0 0 -5px;
+      border: 2px solid #fff; border-radius: 50%; pointer-events: none; box-shadow: 0 0 0 1px rgba(0,0,0,.4); }
+    #actions { position: fixed; right: 12px; bottom: 12px; display: grid;
+      grid-template-columns: repeat(2, auto); gap: 10px; z-index: 2; }
+    .btn { min-width: 84px; min-height: 52px; padding: 0 14px; border: 0; border-radius: 14px;
+      background: rgba(20,30,40,.75); color: #fff; font-size: 16px; font-weight: 700; touch-action: none; }
+    .btn:active { transform: scale(.96); }
+    #btn-color { border: 3px solid #fff; }
+    #toast { position: fixed; left: 50%; top: 18%; transform: translateX(-50%);
+      background: rgba(0,0,0,.7); color: #fff; padding: 8px 14px; border-radius: 10px;
+      opacity: 0; transition: opacity .2s; pointer-events: none; z-index: 3; }
+    #toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="hud">BLOKRA<small>Kiri layar = jalan · Kanan layar = lihat · PC: WASD, E pasang, Q hapus, R warna, Spasi lompat</small></div>
+  <div id="crosshair"></div>
+  <div id="toast"></div>
+  <div id="actions">
+    <button class="btn" id="btn-place">Pasang</button>
+    <button class="btn" id="btn-delete">Hapus</button>
+    <button class="btn" id="btn-color">Warna</button>
+    <button class="btn" id="btn-jump">Lompat</button>
+    <button class="btn" id="btn-reset">Reset</button>
+  </div>
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+  <script type="module" src="./game.js"></script>
+</body>
+</html>
